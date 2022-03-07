@@ -67,7 +67,7 @@ do
 	
 	((COUNTER++))
 
-	if [ $COUNTER -eq ${#PHONE[@]-1} ];
+	if [ $COUNTER -eq ${#PHONE[@]} ];
 	then
 		COUNTER=0
 	fi
