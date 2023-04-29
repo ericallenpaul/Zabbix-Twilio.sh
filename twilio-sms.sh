@@ -76,7 +76,7 @@ if [ -z "$MSG" ]; then usage "No content for the SMS was read from STDIN."; fi;
 for PHONE in "${@:$OPTIND}"; do
 	echo -n "Sending SMS to $PHONE from $CALLERID..."
 	# initiate a curl request to the Twilio REST API, to begin a phone call to that number
-	RESPONSE=`curl -fSs -u "$ACCOUNTSID:$AUTHTOKEN" -d "From=$CALLERID" -d "To=$PHONE" -d "Body=$MSG" "https://api.twilio.com/2010-04-01/Accounts/$ACCOUNTSID/SMS/Messages" 2>&1`
+	RESPONSE=`curl -fSs -u "$ACCOUNTSID:$AUTHTOKEN" -d "From=$CALLERID" -d "To=$PHONE" -d "Body=$MSG" "https://api.twilio.com/2010-04-01/Accounts/$ACCOUNTSID/Messages" 2>&1`
 	echo $RESPONSE >> twilio_response.log
 	if [ $? -gt 0 ]; then echo "Failed to send SMS to $PHONE: $RESPONSE"
 	else echo "ok"
